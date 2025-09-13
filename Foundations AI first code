@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foundations Mysore | Builders & Developers</title>
+<style>
+/* Reset */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Roboto',sans-serif;color:#333;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+header{background:#00539C;color:#fff;padding:20px 0;text-align:center;position:sticky;top:0;z-index:1000;}
+header h1{font-size:2rem;}
+nav a{margin:0 15px;color:#fff;font-weight:bold;}
+.hero{position:relative;overflow:hidden;height:500px;}
+.hero img{width:100%;height:500px;object-fit:cover;position:absolute;top:0;left:0;opacity:0;transition:opacity 1s ease-in-out;}
+.hero img.active{opacity:1;}
+.hero-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:2rem;font-weight:bold;text-shadow:2px 2px 5px #000;text-align:center;}
+.section{padding:50px 20px;max-width:1200px;margin:0 auto;opacity:0;transform:translateY(50px);transition:all 0.8s ease-in-out;}
+.section.visible{opacity:1;transform:translateY(0);}
+.section h2{text-align:center;margin-bottom:30px;color:#00539C;}
+.projects{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
+.project-card{border:1px solid #ddd;border-radius:8px;overflow:hidden;width:300px;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+.project-card:hover{transform:scale(1.05);box-shadow:0 5px 15px rgba(0,0,0,0.2);}
+.project-card img{width:100%;height:200px;object-fit:cover;}
+.project-card div{padding:15px;}
+.lightbox-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;z-index:2000;}
+.lightbox-overlay img{max-width:90%;max-height:90%;border-radius:8px;}
+.lightbox-overlay:target{display:flex;}
+.close-lightbox{position:absolute;top:20px;right:30px;color:#fff;font-size:2rem;}
+.testimonials{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
+.testimonial-card{border:1px solid #ddd;border-radius:8px;padding:20px;width:300px;box-shadow:0 2px 5px rgba(0,0,0,0.1);text-align:center;}
+.testimonial-card p{font-style:italic;margin-bottom:10px;}
+.testimonial-card h4{font-weight:bold;color:#00539C;}
+.features{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
+.feature-card{border:1px solid #ddd;border-radius:8px;padding:20px;width:250px;box-shadow:0 2px 5px rgba(0,0,0,0.1);text-align:center;transition:transform 0.3s;}
+.feature-card:hover{transform:scale(1.05);}
+.feature-card h3{color:#00539C;margin-bottom:10px;}
+.contact{background:#f4f4f4;text-align:center;}
+.contact form{max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:10px;}
+.contact input,.contact textarea{padding:10px;border:1px solid #ccc;border-radius:5px;width:100%;font-size:1rem;}
+.contact button{padding:10px;background:#00539C;color:#fff;border:none;border-radius:5px;font-size:1rem;cursor:pointer;}
+.contact button:hover{background:#003f7f;}
+.map-container{width:100%;height:400px;margin-top:20px;}
+footer{background:#222;color:#fff;text-align:center;padding:20px;}
+html{scroll-behavior:smooth;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Foundations Mysore</h1>
+<nav>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#features">Features</a>
+<a href="#testimonials">Testimonials</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<div class="hero">
+<img src="https://foundationsmysore.com/wp-content/uploads/2024/01/project1.jpg" class="active" alt="Project 1">
+<img src="https://foundationsmysore.com/wp-content/uploads/2024/01/project2.jpg" alt="Project 2">
+<img src="https://foundationsmysore.com/wp-content/uploads/2024/01/project3.jpg" alt="Project 3">
+<div class="hero-text">Building the Future of Mysore</div>
+</div>
+
+<section id="about" class="section">
+<h2>About Us</h2>
+<p style="text-align:center; max-width:800px; margin:0 auto;">Foundations Mysore is a premier construction and real estate development company in Mysore, delivering quality projects that combine design, innovation, and reliability.</p>
+</section>
+
+<section id="projects" class="section">
+<h2>Our Projects</h2>
+<div class="projects">
+<div class="project-card" onclick="openLightbox('project1')">
+<img src="https://foundationsmysore.com/wp-content/uploads/2024/01/project1.jpg" alt="Residential Complex A">
+<div><h3>Residential Complex A</h3><p>Modern apartments designed for comfort and convenience.</p></div>
+</div>
+<div class="project-card" onclick="openLightbox('project2')">
+<img src="https://foundationsmysore.com/wp-content/uploads/2024/01/project2.jpg" alt="Commercial Space B">
+<div><h3>Commercial Space B</h3><p>Flexible office spaces with prime location in Mysore.</p></div>
+</div>
+<div class="project-card" onclick="openLightbox('project3')">
+<img src="https://foundationsmysore.com/wp-content/uploads/2024/01/project3.jpg" alt="Luxury Villas C">
+<div><h3>Luxury Villas C</h3><p>Exclusive villas with modern architecture and amenities.</p></div>
+</div>
+</div>
+</section>
+
+<section id="features" class="section">
+<h2>Our Highlights</h2>
+<div class="features">
+<div class="feature-card"><h3>Prime Location</h3><p>Projects located in the most sought-after areas of Mysore.</p></div>
+<div class="feature-card"><h3>Modern Design</h3><p>Architecturally designed for elegance and functionality.</p></div>
+<div class="feature-card"><h3>Quality Construction</h3><p>High-quality materials ensuring durability and safety.</p></div>
+</div>
+</section>
+
+<section id="testimonials" class="section">
+<h2>Client Testimonials</h2>
+<div class="testimonials">
+<div class="testimonial-card"><p>"Foundations Mysore exceeded our expectations!"</p><h4>- Rajesh K.</h4></div>
+<div class="testimonial-card"><p>"Professional team and great attention to detail."</p><h4>- Meera S.</h4></div>
+<div class="testimonial-card"><p>"Highly recommend for any residential or commercial project."</p><h4>- Anil P.</h4></div>
+</div>
+</section>
+
+<div id="project1" class="lightbox-overlay">
+<a href="#" class="close-lightbox">&times;</a>
+<img src="https://foundationsmysore.com/wp-content/uploads/2024/01/project1.jpg" alt="Project 1">
+</div>
+<div id="project2" class="lightbox-overlay">
+<a href="#" class="close-lightbox">&times;</a>
+<img src="https://foundationsmysore.com/wp-content/uploads/2024/01/project2.jpg" alt="Project 2">
+</div>
+<div id="project3" class="lightbox-overlay">
+<a href="#" class="close-lightbox">&times;</a>
+<img src="https://foundationsmysore.com/wp-content/uploads/2024/01/project3.jpg" alt="Project 3">
+</div>
+
+<section id="contact" class="section contact">
+<h2>Contact Us</h2>
+<p>Reach out to learn more about our projects or schedule a consultation.</p>
+<form>
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea rows="4" placeholder="Your Message" required></textarea>
+<button type="submit">Send Message</button>
+</form>
+</section>
+
+<footer>
+&copy; 2025 Foundations Mysore | All Rights Reserved
+</footer>
+
+<script>
+// Hero Slider
+const slides = document.querySelectorAll('.hero img');
+let current = 0;
+setInterval(() => {
+slides[current].classList.remove('active');
+current = (current + 1) % slides.length;
+slides[current].classList.add('active');
+}, 4000);
+
+// Lightbox
+function openLightbox(id){document.getElementById(id).style.display='flex';}
+
+// Scroll Animations
+const sections=document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{
+sections.forEach(sec=>{
+const rect=sec.getBoundingClientRect();
+if(rect.top<window.innerHeight-100){sec.classList.add('visible');}
+});
+});
+</script>
+
+</body>
+</html>
